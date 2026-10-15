@@ -1,0 +1,43 @@
+---
+import GithubLogo from 'phosphor-astro/GithubLogo.astro';
+import { site } from '../lib/site';
+
+const legalLinks = [
+  { label: 'Privacidad', href: '/privacidad' },
+  { label: 'Términos', href: '/terminos' },
+  { label: 'Datos y almacenamiento', href: '/datos' },
+  { label: 'Permisos', href: '/permisos' },
+  { label: 'Licencia', href: '/licencia' },
+  { label: 'Responsabilidad', href: '/responsabilidad' },
+  { label: 'Preguntas frecuentes', href: '/preguntas-frecuentes' },
+];
+---
+<footer class="border-t border-border-subtle bg-surface-low">
+  <div class="container-page px-5 py-14 md:px-8">
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <a href="/" class="flex items-center gap-2.5" aria-label="Simplestock inicio">
+          <img src="/simplestock-logo.png" alt="Logo de Simplestock" width={30} height={30} class="h-[30px] w-[30px] rounded-lg" />
+          <span class="text-[17px] font-semibold tracking-tight">Simplestock</span>
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-muted">
+          Control de stock simple, privado y sin conexión. Tus datos nunca salen de tu teléfono.
+        </p>
+        <div class="mt-5 flex items-center gap-2">
+          <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-muted transition-colors hover:border-primary/40 hover:text-fg">
+            <GithubLogo class="h-[18px] w-[18px]" />
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-x-10 gap-y-3 sm:grid-cols-2">
+        {legalLinks.map(link => (
+          <a  href={link.href} class="text-sm text-muted transition-colors hover:text-fg">{link.label}</a>
+        ))}
+      </div>
+    </div>
+    <div class="mt-12 flex flex-col gap-3 border-t border-border-subtle pt-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
+      <p>© {new Date().getFullYear()} Simplestock. Código abierto bajo licencia MIT.</p>
+      <p>Hecho para pequeños negocios, sin servidores ni rastreadores.</p>
+    </div>
+  </div>
+</footer>

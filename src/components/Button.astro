@@ -1,0 +1,39 @@
+---
+import clsx from 'clsx';
+
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  target?: string;
+  rel?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  class: className = '',
+  target,
+  rel,
+} = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary select-none whitespace-nowrap';
+
+const variants = {
+  primary: 'bg-primary text-on-primary hover:bg-primary-hover shadow-sm shadow-black/10 light:shadow-violet-200',
+  secondary: 'border border-border-subtle bg-transparent text-fg hover:bg-surface-secondary',
+  ghost: 'text-fg hover:bg-surface-secondary',
+};
+
+const sizes = {
+  sm: 'h-9 px-3.5 text-sm',
+  md: 'h-11 px-5 text-sm',
+  lg: 'h-12 px-6 text-[15px]',
+};
+---
+<a href={href} target={target} rel={rel} class={clsx(base, variants[variant], sizes[size], className)}>
+  <slot />
+</a>

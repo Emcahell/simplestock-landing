@@ -1,0 +1,72 @@
+---
+import Package from 'phosphor-astro/Package.astro';
+import Plus from 'phosphor-astro/Plus.astro';
+import ChartLineUp from 'phosphor-astro/ChartLineUp.astro';
+import ArrowRight from 'phosphor-astro/ArrowRight.astro';
+
+const steps = [
+  {
+    number: 1,
+    title: 'Crea tus productos',
+    description:
+      'Añade nombre, precio, categoría, foto y stock inicial. Lo justo para empezar a vender, sin complicaciones.',
+    icon: Package,
+  },
+  {
+    number: 2,
+    title: 'Registra tus surtidos',
+    description:
+      'Cuando recibes mercancía nueva, súmala con un par de toques. Tu stock disponible se actualiza al instante.',
+    icon: Plus,
+  },
+  {
+    number: 3,
+    title: 'Registra tus ventas',
+    description:
+      'Anota cada venta y Simplestock descuenta automáticamente del stock. Así siempre sabes exactamente qué tienes.',
+    icon: ChartLineUp,
+  },
+];
+---
+<section id="como-funciona" class="scroll-mt-20 px-5 py-20 md:px-8 md:py-28">
+  <div class="container-page">
+    <div class="flex flex-col items-center text-center">
+      <h2 class="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+        Cómo funciona
+      </h2>
+      <p class="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted md:text-lg">
+        En tres pasos simples tienes tu inventario bajo control, directamente desde tu
+        teléfono.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+      {steps.map((step, i) => {
+        const Icon = step.icon;
+        return (
+          <div class="reveal-init group relative flex h-full flex-col rounded-3xl border border-border-subtle bg-surface-low p-8 md:p-10">
+            <div class="flex items-center justify-between">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-on-primary text-sm font-semibold shadow-sm">
+                {step.number}
+              </span>
+              {i < steps.length - 1 && (
+                <ArrowRight class="hidden h-5 w-5 text-faint md:block" />
+              )}
+            </div>
+
+            <div class="mt-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-container text-on-primary-container">
+              <Icon class="h-6 w-6" />
+            </div>
+
+            <h3 class="mt-6 text-xl font-semibold tracking-tight md:text-2xl">
+              {step.title}
+            </h3>
+            <p class="mt-3 text-pretty text-sm leading-relaxed text-muted md:text-base">
+              {step.description}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

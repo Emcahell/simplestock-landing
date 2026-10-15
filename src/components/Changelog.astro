@@ -1,0 +1,45 @@
+---
+import ArrowRight from 'phosphor-astro/ArrowRight.astro';
+
+interface Release {
+  version: string;
+  date: string;
+  title: string;
+  summary: string;
+}
+
+const releases: Release[] = [
+  { version: 'v1.0', date: '10 oct 2026', title: 'Simplestock ya está disponible', summary: 'La primera versión pública llegó a App Store y Google Play. Crea productos, registra surtidos y anota ventas desde hoy mismo.' },
+  { version: 'v0.9', date: '24 sep 2026', title: 'Modo oscuro', summary: 'Toda la app sigue el tema de tu sistema. Más cómodo a la vista y mejor para la batería de tu teléfono.' },
+  { version: 'v0.8', date: '08 sep 2026', title: 'Categorías y búsqueda', summary: 'Organiza tus productos por categorías y encuéntralos al instante, incluso cuando tu catálogo empieza a crecer.' },
+  { version: 'v0.7', date: '22 ago 2026', title: 'Historial de actividad', summary: 'Consulta qué se registró y cuándo para tener siempre claro cómo avanza tu negocio.' },
+  { version: 'v0.6', date: '05 ago 2026', title: 'Primera beta', summary: 'La primera versión vio la luz con lo esencial para empezar a vender: productos, surtidos y ventas.' },
+];
+---
+<section id="novedades" class="scroll-mt-20 px-5 py-20 md:px-8 md:py-28">
+  <div class="container-page">
+    <div class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+      <div class="flex flex-col gap-3">
+        <h2 class="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Novedades</h2>
+        <p class="max-w-xl text-pretty text-base leading-relaxed text-muted">Mejoramos Simplestock cada pocas semanas. Aquí puedes seguir el avance hacia una app de stock cada vez más simple.</p>
+      </div>
+      <a href="https://github.com/simplestock-app/simplestock/releases" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary-hover">
+        Ver todas las versiones
+        <ArrowRight class="h-4 w-4" />
+      </a>
+    </div>
+    <div class="stagger-init no-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:px-0">
+      {releases.map(release => (
+        <article class="flex min-h-[260px] w-[300px] shrink-0 snap-start flex-col rounded-2xl border border-border-subtle bg-surface-card p-6 md:w-[340px]">
+          <span class="inline-flex w-fit items-center gap-2 rounded-full border border-border-subtle bg-surface-secondary px-3 py-1 text-xs font-medium text-fg">
+            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            {release.version}
+          </span>
+          <time class="mt-4 font-mono text-xs uppercase tracking-wide text-faint">{release.date}</time>
+          <h3 class="mt-2 text-lg font-semibold tracking-tight">{release.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">{release.summary}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

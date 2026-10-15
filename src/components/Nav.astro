@@ -1,0 +1,95 @@
+---
+import List from 'phosphor-astro/List.astro';
+import X from 'phosphor-astro/X.astro';
+import Moon from 'phosphor-astro/Moon.astro';
+import Sun from 'phosphor-astro/Sun.astro';
+import GithubLogo from 'phosphor-astro/GithubLogo.astro';
+import { site } from '../lib/site';
+
+const links = [
+  { label: 'Funciones', href: '/#funciones' },
+  { label: 'Privacidad', href: '/#privacidad' },
+  { label: 'Novedades', href: '/#novedades' },
+  { label: 'Opiniones', href: '/#opiniones' },
+];
+---
+<header id="site-nav" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors duration-300">
+  <nav class="container-page flex h-16 items-center justify-between px-5 md:px-8">
+    <a href="/" class="flex items-center gap-2.5" aria-label="Simplestock inicio">
+      <img src="/simplestock-logo.png" alt="Logo de Simplestock" width={30} height={30} class="h-[30px] w-[30px] rounded-lg" />
+      <span class="text-[17px] font-semibold tracking-tight">Simplestock</span>
+    </a>
+    <div class="hidden items-center gap-1 md:flex">
+      {links.map(link => (
+        <a  href={link.href} class="rounded-lg px-3.5 py-2 text-sm font-medium text-muted transition-colors hover:text-fg">{link.label}</a>
+      ))}
+    </div>
+    <div class="flex items-center gap-1.5">
+      <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="Repositorio en GitHub" class="hidden h-9 w-9 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface-secondary hover:text-fg sm:flex">
+        <GithubLogo class="h-[18px] w-[18px]" />
+      </a>
+      <button id="theme-toggle" type="button" aria-label="Cambiar tema" class="flex h-9 w-9 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface-secondary hover:text-fg">
+        <Sun id="theme-sun" class="h-[18px] w-[18px] hidden" />
+        <Moon id="theme-moon" class="h-[18px] w-[18px]" />
+      </button>
+      <a href="/#descargar" class="hidden h-9 items-center rounded-lg bg-primary px-4 text-sm font-medium text-on-primary shadow-sm transition-colors hover:bg-primary-hover sm:inline-flex">Instalar</a>
+      <button id="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" class="flex h-9 w-9 items-center justify-center rounded-lg text-fg transition-colors hover:bg-surface-secondary md:hidden">
+        <List id="icon-menu" class="h-[20px] w-[20px]" />
+        <X id="icon-close" class="h-[20px] w-[20px] hidden" />
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="hidden border-t border-border-subtle bg-bg px-5 pb-6 pt-3 md:hidden">
+    <div class="flex flex-col">
+      {links.map(link => (
+        <a  href={link.href} class="mobile-link rounded-lg px-3 py-3 text-[15px] font-medium text-fg transition-colors hover:bg-surface-secondary">{link.label}</a>
+      ))}
+      <a href={site.github} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-lg px-3 py-3 text-[15px] font-medium text-fg transition-colors hover:bg-surface-secondary">
+        <GithubLogo class="h-[18px] w-[18px]" /> Código fuente
+      </a>
+    </div>
+    <a href="/#descargar" class="mobile-link mt-3 flex h-11 items-center justify-center rounded-xl bg-primary text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover">Instalar Simplestock</a>
+  </div>
+</header>
+
+<script is:inline>
+(function(){
+  try {
+    var root=document.documentElement;
+    var stored=localStorage.getItem('simplestock-theme')||'dark';
+    root.classList.toggle('light',stored==='light');
+    root.classList.toggle('dark',stored==='dark');
+    function update(){
+      var isLight=root.classList.contains('light');
+      var sun=document.getElementById('theme-sun');
+      var moon=document.getElementById('theme-moon');
+      if(sun) sun.classList.toggle('hidden',!isLight);
+      if(moon) moon.classList.toggle('hidden',isLight);
+    }
+    update();
+    var toggle=document.getElementById('theme-toggle');
+    if(toggle) toggle.addEventListener('click',function(){
+      var next=root.classList.contains('dark')?'light':'dark';
+      root.classList.toggle('light',next==='light');
+      root.classList.toggle('dark',next==='dark');
+      try{localStorage.setItem('simplestock-theme',next);}catch(e){}
+      update();
+    });
+  }catch(e){}
+  try{
+    var nav=document.getElementById('site-nav');
+    function onScroll(){ nav.classList.toggle('bg-bg/80',window.scrollY>8); nav.classList.toggle('backdrop-blur-xl',window.scrollY>8); nav.classList.toggle('border-border-subtle',window.scrollY>8); nav.classList.toggle('border-transparent',window.scrollY<=8); }
+    onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  }catch(e){}
+  try{
+    var open=false;
+    var btn=document.getElementById('menu-toggle');
+    var menu=document.getElementById('mobile-menu');
+    var menuIcon=document.getElementById('icon-menu');
+    var closeIcon=document.getElementById('icon-close');
+    function set(o){ open=o; if(menu){menu.classList.toggle('hidden',!o);} if(btn) btn.setAttribute('aria-expanded',String(o)); if(menuIcon) menuIcon.classList.toggle('hidden',o); if(closeIcon) closeIcon.classList.toggle('hidden',!o); document.body.style.overflow=o?'hidden':''; }
+    if(btn) btn.addEventListener('click',function(){ set(!open); });
+    document.querySelectorAll('.mobile-link').forEach(function(a){ a.addEventListener('click',function(){ set(false); }); });
+  }catch(e){}
+})();
+</script>

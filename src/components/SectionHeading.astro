@@ -1,0 +1,14 @@
+---
+import clsx from 'clsx';
+
+const { title, subtitle, align = 'center', class: className = '' } = Astro.props;
+
+// = typeof title === 'string' ? title : await Astro.slots.render('title') || title;
+// = subtitle ? (typeof subtitle === 'string' ? subtitle : await Astro.slots.render('subtitle')) : '';
+---
+<div class={clsx('flex flex-col gap-3', align === 'center' ? 'items-center text-center' : 'items-start text-left', className)}>
+  <h2 class="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+    {title}
+  </h2>
+  {subtitle && <p class="max-w-2xl text-pretty text-base leading-relaxed text-muted md:text-lg">{subtitle}</p>}
+</div>

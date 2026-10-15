@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@custom-variant light (&:where(.light, .light *));
+
+/* ------------------------------------------------------------------ */
+/*  Simplestock Design System — Dark-first (Obsidian) + Light          */
+/* ------------------------------------------------------------------ */
+
+:root,
+.dark {
+  --ss-bg: #09090b;
+  --ss-surface: #0c0c0f;
+  --ss-surface-card: #16171f;
+  --ss-surface-low: #0f1017;
+  --ss-surface-high: #1f202b;
+  --ss-surface-highest: #27272a;
+  --ss-surface-elevated: #222433;
+  --ss-surface-secondary: #1e1f2b;
+  --ss-border: #27272a;
+  --ss-outline: #52525b;
+
+  --ss-fg: #fafafa;
+  --ss-muted: #a1a1aa;
+  --ss-faint: #71717a;
+
+  --ss-primary: #a78bfa;
+  --ss-primary-hover: #c4b5fd;
+  --ss-primary-container: #2e1065;
+  --ss-on-primary: #09090b;
+  --ss-on-primary-container: #ddd6fe;
+
+  --ss-success: #34d399;
+  --ss-success-container: #064e3b;
+  --ss-warning: #fbbf24;
+  --ss-warning-container: #78350f;
+  --ss-danger: #ef4444;
+  --ss-danger-container: #7f1d1d;
+  --ss-info: #38bdf8;
+  --ss-info-container: #0c4a6e;
+
+  --ss-inverse-surface: #e8e8f0;
+  --ss-inverse-fg: #1a1a22;
+
+  --ss-ring: #a78bfa;
+  --ss-card-shadow: none;
+}
+
+.light {
+  --ss-bg: #f8fafc;
+  --ss-surface: #fef7ff;
+  --ss-surface-card: #ffffff;
+  --ss-surface-low: #f9f1ff;
+  --ss-surface-high: #eee4fa;
+  --ss-surface-highest: #e8dff4;
+  --ss-surface-elevated: #ffffff;
+  --ss-surface-secondary: #f1f5f9;
+  --ss-border: #e2e8f0;
+  --ss-outline: #7b7487;
+
+  --ss-fg: #0f172a;
+  --ss-muted: #475569;
+  --ss-faint: #94a3b8;
+
+  --ss-primary: #7c3aed;
+  --ss-primary-hover: #6d28d9;
+  --ss-primary-container: #ede9fe;
+  --ss-on-primary: #ffffff;
+  --ss-on-primary-container: #5b21b6;
+
+  --ss-success: #059669;
+  --ss-success-container: #d1fae5;
+  --ss-warning: #d97706;
+  --ss-warning-container: #fef3c7;
+  --ss-danger: #dc2626;
+  --ss-danger-container: #fee2e2;
+  --ss-info: #0284c7;
+  --ss-info-container: #e0f2fe;
+
+  --ss-inverse-surface: #332e3e;
+  --ss-inverse-fg: #f6edff;
+
+  --ss-ring: #7c3aed;
+  --ss-card-shadow: 0 1px 2px 0 rgb(15 23 42 / 0.06), 0 1px 3px 0 rgb(15 23 42 / 0.1);
+}
+
+@theme inline {
+  --color-bg: var(--ss-bg);
+  --color-surface: var(--ss-surface);
+  --color-card: var(--ss-surface-card);
+  --color-surface-low: var(--ss-surface-low);
+  --color-surface-high: var(--ss-surface-high);
+  --color-surface-highest: var(--ss-surface-highest);
+  --color-surface-elevated: var(--ss-surface-elevated);
+  --color-surface-secondary: var(--ss-surface-secondary);
+  --color-border-subtle: var(--ss-border);
+  --color-outline-strong: var(--ss-outline);
+
+  --color-fg: var(--ss-fg);
+  --color-muted: var(--ss-muted);
+  --color-faint: var(--ss-faint);
+
+  --color-primary: var(--ss-primary);
+  --color-primary-hover: var(--ss-primary-hover);
+  --color-primary-container: var(--ss-primary-container);
+  --color-on-primary: var(--ss-on-primary);
+  --color-on-primary-container: var(--ss-on-primary-container);
+
+  --color-success: var(--ss-success);
+  --color-success-container: var(--ss-success-container);
+  --color-warning: var(--ss-warning);
+  --color-warning-container: var(--ss-warning-container);
+  --color-danger: var(--ss-danger);
+  --color-danger-container: var(--ss-danger-container);
+  --color-info: var(--ss-info);
+  --color-info-container: var(--ss-info-container);
+
+  --color-inverse-surface: var(--ss-inverse-surface);
+  --color-inverse-fg: var(--ss-inverse-fg);
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+    Consolas, monospace;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--ss-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--ss-bg);
+    color: var(--ss-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv03" on, "cv04" on, "cv09" on, "cv11" on;
+  }
+
+  ::selection {
+    background-color: var(--ss-primary);
+    color: var(--ss-on-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ss-ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Motion (Framer) reveal states — only applied when JS is available so the
+     content stays visible for no-JS users and search engine crawlers. */
+  .js .reveal-init {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+
+  .js .stagger-init > * {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 1250px;
+    margin-inline: auto;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .grid-noise {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--ss-fg) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--ss-fg) 6%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,80 @@
+---
+import DeviceMobile from 'phosphor-astro/DeviceMobile.astro';
+import Lock from 'phosphor-astro/Lock.astro';
+import InstallButtons from './InstallButtons.astro';
+import Badge from './Badge.astro';
+
+const avatars = [
+  '/images/avatar-1.webp',
+  '/images/avatar-2.webp',
+  '/images/avatar-3.webp',
+  '/images/avatar-4.webp',
+];
+---
+<section class="relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36">
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute left-1/2 top-[-10%] h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-primary/15 blur-[120px]"></div>
+    <div class="grid-noise absolute inset-0 opacity-[0.4] [mask-image:radial-gradient(ellipse_at_center,black,transparent_72%)]"></div>
+  </div>
+  <div class="container-page grid grid-cols-1 items-center gap-12 px-5 md:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-8">
+    <div class="flex flex-col items-start">
+      <div class="reveal-init">
+        <Badge>
+          <DeviceMobile class="h-3.5 w-3.5" />
+          Disponible para iOS y Android
+        </Badge>
+      </div>
+      <div class="reveal-init" style="transition-delay:80ms">
+        <h1 class="mt-6 text-balance text-[2.6rem] font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.25rem]">
+          Tu stock, simple
+          <br />
+          y <span class="text-primary">100% privado</span>.
+        </h1>
+      </div>
+      <div class="reveal-init" style="transition-delay:160ms">
+        <p class="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted md:text-lg">
+          Crea productos, registra surtidos y anota tus ventas desde el teléfono. Simplestock guarda todo en tu dispositivo: sin cuentas, sin servidores y sin necesidad de internet.
+        </p>
+      </div>
+      <div class="reveal-init mt-8 w-full" style="transition-delay:240ms">
+        <InstallButtons />
+      </div>
+      <div class="reveal-init" style="transition-delay:320ms">
+        <div class="mt-7 flex flex-wrap items-center gap-3 text-sm text-muted">
+          <div class="flex -space-x-2.5">
+            {avatars.map((src, i) => (
+              <img  src={src} alt={`Persona que usa Simplestock (${i+1})`} width={32} height={32} loading="lazy" decoding="async" class="h-8 w-8 rounded-full border-2 border-bg object-cover object-top" />
+            ))}
+          </div>
+          <span class="inline-flex items-center gap-1.5">
+            <Lock class="h-4 w-4 text-primary" />
+            Pensada para negocios que recién comienzan
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-init w-full" style="transition-delay:160ms">
+      <div class="relative mx-auto w-full max-w-[560px] hero-parallax">
+        <div class="relative overflow-hidden rounded-3xl border border-border-subtle bg-surface-card p-2 shadow-2xl shadow-black/20 light:shadow-violet-200/50">
+          <img src="/images/hero-app.png" alt="Mano sosteniendo un teléfono con la app Simplestock abierta" width={1306} height={1205} class="h-auto w-full rounded-[1.25rem] object-cover" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script is:inline>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var el=document.querySelector('.hero-parallax');
+  if(!el) return;
+  var raf=0;
+  function onScroll(){
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(function(){
+      var y=Math.min(window.scrollY,600);
+      el.style.transform='translate3d(0,'+(y*0.06)+'px,0)';
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+})();
+</script>
