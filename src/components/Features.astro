@@ -3,6 +3,7 @@ import Package from 'phosphor-astro/Package.astro';
 import Plus from 'phosphor-astro/Plus.astro';
 import Sparkle from 'phosphor-astro/Sparkle.astro';
 import ChartLine from 'phosphor-astro/ChartLine.astro';
+import { url } from '../utils/url';
 
 interface Feature {
   title: string;
@@ -14,7 +15,7 @@ interface Feature {
 const main: Feature = {
   title: 'Todo tu inventario, donde debe estar',
   description: 'Crea productos, organízalos por categorías y consulta tu stock al instante. Olvídate de las hojas de cálculo y los cuadernos.',
-  image: '/images/screen-stock.png',
+  image: url('/images/screen-stock.png'),
   icon: Package,
 };
 
@@ -22,13 +23,13 @@ const row: Feature[] = [
   {
     title: 'Crea productos en segundos',
     description: 'Nombre, precio, categoría, foto y stock inicial. Lo justo para empezar a vender, sin pantallas llenas de opciones.',
-    image: '/images/screen-1.png',
+    image: url('/images/screen-1.png'),
     icon: Plus,
   },
   {
     title: 'Registra tus surtidos',
     description: 'Suma la mercancía que ingresa con un par de toques y observa cómo se actualiza tu stock disponible al momento.',
-    image: '/images/screen-2.png',
+    image: url('/images/screen-2.png'),
     icon: Sparkle,
   },
 ];
@@ -36,7 +37,7 @@ const row: Feature[] = [
 const wide: Feature = {
   title: 'Vende y mantén tu stock al día',
   description: 'Anota cada venta en segundos. Simplestock descuenta el stock automáticamente y guarda el historial para que sepas cómo va tu negocio.',
-  image: '/images/screen-3.png',
+  image: url('/images/screen-3.png'),
   icon: ChartLine,
 };
 

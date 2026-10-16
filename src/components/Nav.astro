@@ -5,18 +5,19 @@ import Moon from 'phosphor-astro/Moon.astro';
 import Sun from 'phosphor-astro/Sun.astro';
 import GithubLogo from 'phosphor-astro/GithubLogo.astro';
 import { site } from '../lib/site';
+import { url } from '../utils/url';
 
 const links = [
-  { label: 'Funciones', href: '/#funciones' },
-  { label: 'Privacidad', href: '/#privacidad' },
-  { label: 'Novedades', href: '/#novedades' },
-  { label: 'Opiniones', href: '/#opiniones' },
+  { label: 'Funciones', href: url('/#funciones') },
+  { label: 'Privacidad', href: url('/#privacidad') },
+  { label: 'Novedades', href: url('/#novedades') },
+  { label: 'Opiniones', href: url('/#opiniones') },
 ];
 ---
 <header id="site-nav" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors duration-300">
   <nav class="container-page flex h-16 items-center justify-between px-5 md:px-8">
-    <a href="/" class="flex items-center gap-2.5" aria-label="Simplestock inicio">
-      <img src="/simplestock-logo.png" alt="Logo de Simplestock" width={30} height={30} class="h-[30px] w-[30px] rounded-lg" />
+    <a href={url('/')} class="flex items-center gap-2.5" aria-label="Simplestock inicio">
+      <img src={url('/simplestock-logo.png')} alt="Logo de Simplestock" width={30} height={30} class="h-[30px] w-[30px] rounded-lg" />
       <span class="text-[17px] font-semibold tracking-tight">Simplestock</span>
     </a>
     <div class="hidden items-center gap-1 md:flex">
@@ -32,7 +33,7 @@ const links = [
         <Sun id="theme-sun" class="h-[18px] w-[18px] hidden" />
         <Moon id="theme-moon" class="h-[18px] w-[18px]" />
       </button>
-      <a href="/#descargar" class="hidden h-9 items-center rounded-lg bg-primary px-4 text-sm font-medium text-on-primary shadow-sm transition-colors hover:bg-primary-hover sm:inline-flex">Instalar</a>
+      <a href={url('/#descargar')} class="hidden h-9 items-center rounded-lg bg-primary px-4 text-sm font-medium text-on-primary shadow-sm transition-colors hover:bg-primary-hover sm:inline-flex">Instalar</a>
       <button id="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" class="flex h-9 w-9 items-center justify-center rounded-lg text-fg transition-colors hover:bg-surface-secondary md:hidden">
         <List id="icon-menu" class="h-[20px] w-[20px]" />
         <X id="icon-close" class="h-[20px] w-[20px] hidden" />
@@ -48,7 +49,7 @@ const links = [
         <GithubLogo class="h-[18px] w-[18px]" /> Código fuente
       </a>
     </div>
-    <a href="/#descargar" class="mobile-link mt-3 flex h-11 items-center justify-center rounded-xl bg-primary text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover">Instalar Simplestock</a>
+    <a href={url('/#descargar')} class="mobile-link mt-3 flex h-11 items-center justify-center rounded-xl bg-primary text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover">Instalar Simplestock</a>
   </div>
 </header>
 

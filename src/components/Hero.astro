@@ -3,12 +3,13 @@ import DeviceMobile from 'phosphor-astro/DeviceMobile.astro';
 import Lock from 'phosphor-astro/Lock.astro';
 import InstallButtons from './InstallButtons.astro';
 import Badge from './Badge.astro';
+import { url } from '../utils/url';
 
 const avatars = [
-  '/images/avatar-1.webp',
-  '/images/avatar-2.webp',
-  '/images/avatar-3.webp',
-  '/images/avatar-4.webp',
+  url('/images/avatar-1.webp'),
+  url('/images/avatar-2.webp'),
+  url('/images/avatar-3.webp'),
+  url('/images/avatar-4.webp'),
 ];
 ---
 <section class="relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36">
@@ -56,7 +57,7 @@ const avatars = [
     <div class="reveal-init w-full" style="transition-delay:160ms">
       <div class="relative mx-auto w-full max-w-[560px] hero-parallax">
         <div class="relative overflow-hidden rounded-3xl border border-border-subtle bg-surface-card p-2 shadow-2xl shadow-black/20 light:shadow-violet-200/50">
-          <img src="/images/hero-app.png" alt="Mano sosteniendo un teléfono con la app Simplestock abierta" width={1306} height={1205} class="h-auto w-full rounded-[1.25rem] object-cover" />
+          <img src={url('/images/hero-app.png')} alt="Mano sosteniendo un teléfono con la app Simplestock abierta" width={1306} height={1205} class="h-auto w-full rounded-[1.25rem] object-cover" />
         </div>
       </div>
     </div>

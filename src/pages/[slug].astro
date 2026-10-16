@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { site } from "../lib/site";
+import { url } from "../utils/url";
 
 export async function getStaticPaths() {
   const slugs: Record<string, string> = {
@@ -38,7 +39,7 @@ void site;
   <article class="px-5 pb-24 pt-28 md:px-8 md:pt-36">
     <div class="container-page max-w-3xl">
       <a
-        href="/"
+        href={url("/")}
         class="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-fg"
       >
         <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">

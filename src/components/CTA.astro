@@ -2,12 +2,13 @@
 import InstallButtons from './InstallButtons.astro';
 import GithubLogo from 'phosphor-astro/GithubLogo.astro';
 import { site } from '../lib/site';
+import { url } from '../utils/url';
 
 const avatars = [
-  '/images/avatar-2.webp',
-  '/images/avatar-4.webp',
-  '/images/avatar-1.webp',
-  '/images/avatar-3.webp',
+  url('/images/avatar-2.webp'),
+  url('/images/avatar-4.webp'),
+  url('/images/avatar-1.webp'),
+  url('/images/avatar-3.webp'),
 ];
 ---
 <section id="descargar" class="scroll-mt-20 px-5 py-20 md:px-8 md:py-28">
@@ -35,7 +36,7 @@ const avatars = [
           </div>
         </div>
         <div class="relative mx-auto w-full max-w-[280px]">
-          <img src="/images/closing-app.png" alt="Teléfono mostrando la app Simplestock" width={666} height={945} loading="lazy" decoding="async" class="h-auto w-full rounded-3xl border border-border-subtle object-cover shadow-2xl shadow-black/20" />
+          <img src={url('/images/closing-app.png')} alt="Teléfono mostrando la app Simplestock" width={666} height={945} loading="lazy" decoding="async" class="h-auto w-full rounded-3xl border border-border-subtle object-cover shadow-2xl shadow-black/20" />
         </div>
       </div>
     </div>

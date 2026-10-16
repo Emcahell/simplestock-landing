@@ -5,6 +5,7 @@ import ShieldCheck from 'phosphor-astro/ShieldCheck.astro';
 import DeviceMobile from 'phosphor-astro/DeviceMobile.astro';
 import Check from 'phosphor-astro/Check.astro';
 import SectionHeading from './SectionHeading.astro';
+import { url } from '../utils/url';
 
 const guarantees = [
   'Funciona sin conexión a internet',
@@ -53,7 +54,7 @@ const badges = [
     <div class="reveal-init" style="transition-delay:160ms">
       <div class="relative mx-auto w-full max-w-[460px]">
         <div class="absolute inset-0 -z-10 rounded-[2.5rem] bg-primary/15 blur-3xl"></div>
-        <img src="/images/screen-4.png" alt="Pantalla de Simplestock mostrando resúmenes" width={1448} height={1086} loading="lazy" decoding="async" class="h-auto w-full rounded-3xl border border-border-subtle bg-surface-card object-cover shadow-2xl shadow-black/20" />
+        <img src={url('/images/screen-4.png')} alt="Pantalla de Simplestock mostrando resúmenes" width={1448} height={1086} loading="lazy" decoding="async" class="h-auto w-full rounded-3xl border border-border-subtle bg-surface-card object-cover shadow-2xl shadow-black/20" />
       </div>
     </div>
   </div>
