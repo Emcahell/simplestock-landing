@@ -9,4 +9,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [preact()],
+  site: "https://emcahell.github.io",
+  base: "/simplestock-landing",
 });
