@@ -1,116 +1,176 @@
 ---
-import Package from 'phosphor-astro/Package.astro';
-import Plus from 'phosphor-astro/Plus.astro';
-import Sparkle from 'phosphor-astro/Sparkle.astro';
-import ChartLine from 'phosphor-astro/ChartLine.astro';
-import { url } from '../utils/url';
+import Package from "phosphor-astro/Package.astro";
+import Plus from "phosphor-astro/Plus.astro";
+import Sparkle from "phosphor-astro/Sparkle.astro";
+import ChartLine from "phosphor-astro/ChartLine.astro";
+import { url } from "../utils/url";
 
 interface Feature {
-  title: string;
-  description: string;
-  image: string;
-  icon: any;
+    title: string;
+    description: string;
+    image: string;
+    icon: any;
 }
 
 const main: Feature = {
-  title: 'Todo tu inventario, donde debe estar',
-  description: 'Crea productos, organízalos por categorías y consulta tu stock al instante. Olvídate de las hojas de cálculo y los cuadernos.',
-  image: url('/images/screen-stock.png'),
-  icon: Package,
+    title: "Todo tu inventario, donde debe estar",
+    description:
+        "Crea productos, organízalos por categorías y consulta tu stock al instante. Olvídate de las hojas de cálculo y los cuadernos.",
+    image: url("/images/products-app.webp"),
+    icon: Package,
 };
 
 const row: Feature[] = [
-  {
-    title: 'Crea productos en segundos',
-    description: 'Nombre, precio, categoría, foto y stock inicial. Lo justo para empezar a vender, sin pantallas llenas de opciones.',
-    image: url('/images/screen-1.png'),
-    icon: Plus,
-  },
-  {
-    title: 'Registra tus surtidos',
-    description: 'Suma la mercancía que ingresa con un par de toques y observa cómo se actualiza tu stock disponible al momento.',
-    image: url('/images/screen-2.png'),
-    icon: Sparkle,
-  },
+    {
+        title: "Crea productos en segundos",
+        description:
+            "Nombre, precio, categoría, foto y stock inicial. Lo justo para empezar a vender, sin pantallas llenas de opciones.",
+        image: url("/images/create-product-app.webp"),
+        icon: Plus,
+    },
+    {
+        title: "Registra tus surtidos",
+        description:
+            "Suma la mercancía que ingresa con un par de toques y observa cómo se actualiza tu stock disponible al momento.",
+        image: url("/images/new-surtido-app.webp"),
+        icon: Sparkle,
+    },
 ];
 
 const wide: Feature = {
-  title: 'Vende y mantén tu stock al día',
-  description: 'Anota cada venta en segundos. Simplestock descuenta el stock automáticamente y guarda el historial para que sepas cómo va tu negocio.',
-  image: url('/images/screen-3.png'),
-  icon: ChartLine,
+    title: "Vende y mantén tu stock al día",
+    description:
+        "Anota cada venta en segundos. Simplestock descuenta el stock automáticamente y guarda el historial para que sepas cómo va tu negocio.",
+    image: url("/images/new-sale-app.webp"),
+    icon: ChartLine,
 };
-
-
 ---
+
 <section id="funciones" class="scroll-mt-20 px-5 py-20 md:px-8 md:py-28">
-  <div class="container-page flex flex-col gap-5 md:gap-6">
-    <div class="reveal-init">
-      <div class="relative flex min-h-[540px] flex-col items-center gap-8 overflow-hidden rounded-3xl border border-border-subtle bg-surface-low p-8 pt-12 md:min-h-[600px] md:p-14">
-        <div class="flex flex-col items-center gap-3 text-center">
-      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
-        <Package class="h-[18px] w-[18px]" />
-      </span>
-      <h3 class="text-balance text-xl font-semibold tracking-tight md:text-2xl">Todo tu inventario, donde debe estar</h3>
-      <p class="max-w-md text-pretty text-sm leading-relaxed text-muted md:text-base">Crea productos, organízalos por categorías y consulta tu stock al instante. Olvídate de las hojas de cálculo y los cuadernos.</p>
-    </div>
-        <div class="mt-auto w-full max-w-[420px]">
-          <img src={main.image} alt="Pantalla de Simplestock mostrando productos y stock" width={486} height={1014} loading="lazy" decoding="async" class="mx-auto h-auto w-full max-w-[300px] rounded-t-2xl border border-border-subtle/70 object-cover md:max-w-[340px]" />
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
-      {row.map((feature, i) => (
-        <div class="reveal-init" style={`transition-delay:${i*80}ms`}>
-          <div class="flex h-full min-h-[520px] flex-col gap-8 overflow-hidden rounded-3xl border border-border-subtle bg-surface-low p-8 pt-10 md:p-10">
-            {i === 0 ? (
-              <>
-                <div class="mx-auto w-full max-w-[300px]">
-                  <img src={feature.image} alt={feature.title} width={1448} height={1086} loading="lazy" decoding="async" class="h-auto w-full rounded-2xl border border-border-subtle/70 object-cover" />
+    <div class="container-page flex flex-col gap-5 md:gap-6">
+        <div class="reveal-init">
+            <div class="relative flex min-h-[540px] flex-col items-center gap-8 overflow-hidden rounded-3xl border border-border-subtle bg-surface-low p-8 pt-12 md:min-h-[600px] md:p-14">
+                <div class="flex flex-col items-center gap-3 text-center">
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
+                        <Package class="h-[18px] w-[18px]" />
+                    </span>
+                    <h3 class="text-balance text-xl font-semibold tracking-tight md:text-2xl">
+                        Todo tu inventario, donde debe estar
+                    </h3>
+                    <p class="max-w-md text-pretty text-sm leading-relaxed text-muted md:text-base">
+                        Crea productos, organízalos por categorías y consulta tu
+                        stock al instante. Olvídate de las hojas de cálculo y
+                        los cuadernos.
+                    </p>
                 </div>
-                <div class="mt-auto">
-                  <div class="flex flex-col items-start gap-3 text-left">
-      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
-        <Plus class="h-[18px] w-[18px]" />
-      </span>
-      <h3 class="text-balance text-xl font-semibold tracking-tight md:text-2xl">Crea productos en segundos</h3>
-      <p class="max-w-md text-pretty text-sm leading-relaxed text-muted md:text-base">Nombre, precio, categoría, foto y stock inicial. Lo justo para empezar a vender, sin pantallas llenas de opciones.</p>
-    </div>
+                <div class="mt-auto w-full max-w-[420px]">
+                    <img
+                        src={main.image}
+                        alt="Pantalla de Simplestock mostrando productos y stock"
+                        width={486}
+                        height={1014}
+                        loading="lazy"
+                        decoding="async"
+                        class="mx-auto h-auto w-full max-w-[300px] rounded-t-2xl border border-border-subtle/70 object-cover md:max-w-[340px]"
+                    />
                 </div>
-              </>
-            ) : (
-              <>
-                <div class="flex flex-col items-start gap-3 text-left">
-      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
-        <Sparkle class="h-[18px] w-[18px]" />
-      </span>
-      <h3 class="text-balance text-xl font-semibold tracking-tight md:text-2xl">Registra tus surtidos</h3>
-      <p class="max-w-md text-pretty text-sm leading-relaxed text-muted md:text-base">Suma la mercancía que ingresa con un par de toques y observa cómo se actualiza tu stock disponible al momento.</p>
-    </div>
-                <div class="mx-auto mt-auto w-full max-w-[300px]">
-                  <img src={feature.image} alt={feature.title} width={1448} height={1086} loading="lazy" decoding="async" class="h-auto w-full rounded-2xl border border-border-subtle/70 object-cover" />
+            </div>
+        </div>
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
+            {row.map((feature, i) => (
+                <div class="reveal-init" style={`transition-delay:${i * 80}ms`}>
+                    <div class="flex h-full min-h-[520px] flex-col gap-8 overflow-hidden rounded-3xl border border-border-subtle bg-surface-low p-8 pt-10 md:p-10">
+                        {i === 0 ? (
+                            <>
+                                <div class="mx-auto w-full max-w-[300px]">
+                                    <img
+                                        src={feature.image}
+                                        alt={feature.title}
+                                        width={486}
+                                        height={1014}
+                                        loading="lazy"
+                                        decoding="async"
+                                        class="h-auto w-full rounded-2xl border border-border-subtle/70 object-cover"
+                                    />
+                                </div>
+                                <div class="mt-auto">
+                                    <div class="flex flex-col items-start gap-3 text-left">
+                                        <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
+                                            <Plus class="h-[18px] w-[18px]" />
+                                        </span>
+                                        <h3 class="text-balance text-xl font-semibold tracking-tight md:text-2xl">
+                                            Crea productos en segundos
+                                        </h3>
+                                        <p class="max-w-md text-pretty text-sm leading-relaxed text-muted md:text-base">
+                                            Nombre, precio, categoría, foto y
+                                            stock inicial. Lo justo para empezar
+                                            a vender, sin pantallas llenas de
+                                            opciones.
+                                        </p>
+                                    </div>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div class="flex flex-col items-start gap-3 text-left">
+                                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
+                                        <Sparkle class="h-[18px] w-[18px]" />
+                                    </span>
+                                    <h3 class="text-balance text-xl font-semibold tracking-tight md:text-2xl">
+                                        Registra tus surtidos
+                                    </h3>
+                                    <p class="max-w-md text-pretty text-sm leading-relaxed text-muted md:text-base">
+                                        Suma la mercancía que ingresa con un par
+                                        de toques y observa cómo se actualiza tu
+                                        stock disponible al momento.
+                                    </p>
+                                </div>
+                                <div class="mx-auto mt-auto w-full max-w-[300px]">
+                                    <img
+                                        src={feature.image}
+                                        alt={feature.title}
+                                        width={486}
+                                        height={1014}
+                                        loading="lazy"
+                                        decoding="async"
+                                        class="h-auto w-full rounded-2xl border border-border-subtle/70 object-cover"
+                                    />
+                                </div>
+                            </>
+                        )}
+                    </div>
                 </div>
-              </>
-            )}
-          </div>
+            ))}
         </div>
-      ))}
-    </div>
-    <div class="reveal-init">
-      <div class="grid grid-cols-1 items-center gap-8 overflow-hidden rounded-3xl border border-border-subtle bg-surface-low p-8 md:grid-cols-2 md:p-12">
-        <div class="order-2 md:order-1">
-          <img src={wide.image} alt={wide.title} width={1448} height={1086} loading="lazy" decoding="async" class="h-auto w-full rounded-2xl border border-border-subtle/70 object-cover" />
+        <div class="reveal-init">
+            <div class="grid grid-cols-1 items-center gap-8 overflow-hidden rounded-3xl border border-border-subtle bg-surface-low p-8 md:grid-cols-2 md:p-12">
+                <div class="order-2 md:order-1">
+                    <img
+                        src={wide.image}
+                        alt={wide.title}
+                        width={486}
+                        height={1014}
+                        loading="lazy"
+                        decoding="async"
+                        class="h-auto w-68 rounded-2xl border border-border-subtle/70 object-cover"
+                    />
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="flex flex-col items-start gap-3 text-left">
+                        <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
+                            <ChartLine class="h-[18px] w-[18px]" />
+                        </span>
+                        <h3 class="text-balance text-xl font-semibold tracking-tight md:text-2xl">
+                            Vende y mantén tu stock al día
+                        </h3>
+                        <p class="max-w-md text-pretty text-sm leading-relaxed text-muted md:text-base">
+                            Anota cada venta en segundos. Simplestock descuenta
+                            el stock automáticamente y guarda el historial para
+                            que sepas cómo va tu negocio.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="order-1 md:order-2">
-          <div class="flex flex-col items-start gap-3 text-left">
-      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
-        <ChartLine class="h-[18px] w-[18px]" />
-      </span>
-      <h3 class="text-balance text-xl font-semibold tracking-tight md:text-2xl">Vende y mantén tu stock al día</h3>
-      <p class="max-w-md text-pretty text-sm leading-relaxed text-muted md:text-base">Anota cada venta en segundos. Simplestock descuenta el stock automáticamente y guarda el historial para que sepas cómo va tu negocio.</p>
     </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>

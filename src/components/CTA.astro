@@ -1,44 +1,52 @@
 ---
-import InstallButtons from './InstallButtons.astro';
-import GithubLogo from 'phosphor-astro/GithubLogo.astro';
-import { site } from '../lib/site';
-import { url } from '../utils/url';
-
-const avatars = [
-  url('/images/avatar-2.webp'),
-  url('/images/avatar-4.webp'),
-  url('/images/avatar-1.webp'),
-  url('/images/avatar-3.webp'),
-];
+import InstallButtons from "./InstallButtons.astro";
+import GithubLogo from "phosphor-astro/GithubLogo.astro";
+import { site } from "../lib/site";
+import { url } from "../utils/url";
 ---
+
 <section id="descargar" class="scroll-mt-20 px-5 py-20 md:px-8 md:py-28">
-  <div class="reveal-init">
-    <div class="container-page relative overflow-hidden rounded-[2rem] border border-border-subtle bg-surface-low">
-      <div class="pointer-events-none absolute -right-20 -top-24 h-[420px] w-[420px] rounded-full bg-primary/20 blur-[120px]"></div>
-      <div class="relative grid grid-cols-1 items-center gap-10 p-8 md:grid-cols-[1.2fr_0.8fr] md:p-14">
-        <div class="flex flex-col items-start">
-          <h2 class="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">Lleva tu negocio en el bolsillo.</h2>
-          <p class="mt-4 max-w-lg text-pretty text-base leading-relaxed text-muted md:text-lg">Descarga Simplestock gratis y empieza a controlar tu stock hoy mismo. Si quieres revisar cómo funciona por dentro, el código es abierto.</p>
-          <div class="mt-8 flex flex-col gap-4">
-            <InstallButtons />
-            <a href={site.github} target="_blank" rel="noopener noreferrer" class="inline-flex h-11 w-fit items-center gap-2 rounded-xl border border-border-subtle px-5 text-sm font-medium text-fg transition-colors hover:bg-surface-secondary">
-              <GithubLogo class="h-[18px] w-[18px]" />
-              Ver el código en GitHub
-            </a>
-          </div>
-          <div class="mt-8 flex flex-wrap items-center gap-3 text-sm text-muted">
-            <div class="flex -space-x-2.5">
-              {avatars.map((src, i) => (
-                <img  src={src} alt={`Persona que usa Simplestock (${i+1})`} width={30} height={30} loading="lazy" decoding="async" class="h-[30px] w-[30px] rounded-full border-2 border-surface-low object-cover object-top" />
-              ))}
+    <div class="reveal-init">
+        <div class="container-page relative overflow-hidden rounded-[2rem] border border-border-subtle bg-surface-low">
+            <div class="pointer-events-none absolute -right-20 -top-24 h-[420px] w-[420px] rounded-full bg-primary/20 blur-[120px]"></div>
+            <div class="relative grid grid-cols-1 items-center gap-10 p-8 md:grid-cols-[1.2fr_0.8fr] md:p-14">
+                <div class="flex flex-col items-start">
+                    <h2 class="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+                        Lleva tu negocio en el bolsillo.
+                    </h2>
+                    <p class="mt-4 max-w-lg text-pretty text-base leading-relaxed text-muted md:text-lg">
+                        Descarga Simplestock gratis y empieza a controlar tu
+                        stock hoy mismo. Si quieres revisar cómo funciona por
+                        dentro, el código es abierto.
+                    </p>
+                    <div class="mt-8 flex flex-col gap-4">
+                        <InstallButtons />
+                        <a
+                            href={site.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex h-11 w-fit items-center gap-2 rounded-xl border border-border-subtle px-5 text-sm font-medium text-fg transition-colors hover:bg-surface-secondary"
+                        >
+                            <GithubLogo class="h-[18px] w-[18px]" />
+                            Ver el código en GitHub
+                        </a>
+                    </div>
+                    <div class="mt-8 flex flex-wrap items-center gap-3 text-sm text-muted">
+                        Gratis · Sin registro · Sin anuncios
+                    </div>
+                </div>
+                <div class="relative mx-auto w-full max-w-[280px]">
+                    <img
+                        src={url("/images/welcome-app.webp")}
+                        alt="Teléfono mostrando la app Simplestock"
+                        width={666}
+                        height={945}
+                        loading="lazy"
+                        decoding="async"
+                        class="h-auto w-full rounded-3xl border border-border-subtle object-cover shadow-2xl shadow-black/20"
+                    />
+                </div>
             </div>
-            Gratis · Sin registro · Sin anuncios
-          </div>
         </div>
-        <div class="relative mx-auto w-full max-w-[280px]">
-          <img src={url('/images/closing-app.png')} alt="Teléfono mostrando la app Simplestock" width={666} height={945} loading="lazy" decoding="async" class="h-auto w-full rounded-3xl border border-border-subtle object-cover shadow-2xl shadow-black/20" />
-        </div>
-      </div>
     </div>
-  </div>
 </section>
