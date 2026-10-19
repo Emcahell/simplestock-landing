@@ -1,10 +1,9 @@
 ---
-import AppleLogo from 'phosphor-astro/AppleLogo.astro';
-import GooglePlayLogo from 'phosphor-astro/GooglePlayLogo.astro';
+import AndroidLogo from 'phosphor-astro/AndroidLogo.astro';
 import clsx from 'clsx';
 import { site } from '../lib/site';
 
-const { class: className = '', size = 'lg' } = Astro.props;
+const { class: className = '', size = 'lg', note = false } = Astro.props;
 
 const pad = size === 'lg' ? 'h-[3.25rem] px-5' : 'h-11 px-4';
 const storeClass = clsx(
@@ -12,19 +11,25 @@ const storeClass = clsx(
   pad,
 );
 ---
-<div class={clsx('flex flex-wrap items-center gap-3', className)}>
-  <a href={site.appStore} target="_blank" rel="noopener noreferrer" class={storeClass} aria-label="Descargar en el App Store">
-    <AppleLogo class="h-6 w-6 shrink-0 text-fg" />
+<div class={clsx('flex flex-col items-start gap-3', className)}>
+  <a
+    href={site.androidApk}
+    download
+    rel="noopener noreferrer"
+    class={storeClass}
+    aria-label="Descargar Simplestock para Android"
+  >
+    <AndroidLogo class="h-[22px] w-[22px] shrink-0 text-fg" />
     <span class="flex flex-col leading-none">
-      <span class="text-[10px] uppercase tracking-wide text-faint">Descargar en</span>
-      <span class="mt-0.5 text-sm font-semibold text-fg">App Store</span>
+      <span class="text-[10px] uppercase tracking-wide text-faint">Descargar</span>
+      <span class="mt-0.5 text-sm font-semibold text-fg">Android (APK)</span>
     </span>
   </a>
-  <a href={site.playStore} target="_blank" rel="noopener noreferrer" class={storeClass} aria-label="Descargar en Google Play">
-    <GooglePlayLogo class="h-[22px] w-[22px] shrink-0 text-fg" />
-    <span class="flex flex-col leading-none">
-      <span class="text-[10px] uppercase tracking-wide text-faint">Descargar en</span>
-      <span class="mt-0.5 text-sm font-semibold text-fg">Google Play</span>
-    </span>
-  </a>
+  {
+    note && (
+      <p class="text-xs leading-relaxed text-muted">
+        ¿Usas iPhone? La versión para iOS llegará pronto.
+      </p>
+    )
+  }
 </div>

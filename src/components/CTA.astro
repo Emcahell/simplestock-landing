@@ -1,6 +1,7 @@
 ---
 import InstallButtons from "./InstallButtons.astro";
 import GithubLogo from "phosphor-astro/GithubLogo.astro";
+import Bug from "phosphor-astro/Bug.astro";
 import { site } from "../lib/site";
 import { url } from "../utils/url";
 ---
@@ -21,15 +22,26 @@ import { url } from "../utils/url";
                     </p>
                     <div class="mt-8 flex flex-col gap-4">
                         <InstallButtons />
-                        <a
-                            href={site.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex h-11 w-fit items-center gap-2 rounded-xl border border-border-subtle px-5 text-sm font-medium text-fg transition-colors hover:bg-surface-secondary"
-                        >
-                            <GithubLogo class="h-[18px] w-[18px]" />
-                            Ver el código en GitHub
-                        </a>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <a
+                                href={site.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex h-11 w-fit items-center gap-2 rounded-xl border border-border-subtle px-5 text-sm font-medium text-fg transition-colors hover:bg-surface-secondary"
+                            >
+                                <GithubLogo class="h-[18px] w-[18px]" />
+                                Ver el código en GitHub
+                            </a>
+                            <a
+                                href={site.issues}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex h-11 w-fit items-center gap-2 rounded-xl border border-border-subtle px-5 text-sm font-medium text-fg transition-colors hover:bg-surface-secondary"
+                            >
+                                <Bug class="h-[18px] w-[18px]" />
+                                Reportar un bug o sugerir un cambio
+                            </a>
+                        </div>
                     </div>
                     <div class="mt-8 flex flex-wrap items-center gap-3 text-sm text-muted">
                         Gratis · Sin registro · Sin anuncios

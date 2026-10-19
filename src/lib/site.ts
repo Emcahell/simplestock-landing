@@ -8,6 +8,8 @@ export const site = {
   issues: "https://github.com/Emcahell/simplestock/issues",
   appStore: "https://apps.apple.com/app/simplestock",
   playStore: "https://play.google.com/store/apps/details?id=com.simplestock",
+  androidApk:
+    "https://github.com/Emcahell/simplestock/releases/latest/download/simplestock.apk",
   contactEmail: "https://github.com/Emcahell/simplestock/issues",
 
   owner: "Simplestock",
